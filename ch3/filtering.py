@@ -184,18 +184,17 @@ def smooth_histogram(image):
 
 if __name__ == "__main__":
     # homework 4:
-    H = generate_gaussian_template(50)
+    H = generate_gaussian_template(200)
     image = cv2.imread('common/image1_grey.jpg', cv2.IMREAD_GRAYSCALE) # 目前只实现了读取灰度图
-    noisy_img = imnoise(image) # 添加噪声
-    #J = cv2.filter2D(noisy_img, -1, H)
-    J = my_filter(image, H)
+    J = cv2.filter2D(image, -1, H)
+    # J = my_filter(image, H)
     # noisy_img = imnoise(image) # 添加噪声
     # J = median_filter(noisy_img, 3)
     # cv2.imshow('Original Image', image)
     # J = cv2.dilate(image, np.ones((5,5),np.uint8))
     # J = dilate_filter(image, 5)
 
-    cv2.imshow('Origin Image', noisy_img)
+    cv2.imshow('Origin Image', image)
     cv2.imshow('Filtered Image', J)
     cv2.waitKey(0)
     cv2.destroyAllWindows()

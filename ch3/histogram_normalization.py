@@ -23,6 +23,7 @@ if __name__ == "__main__":
     matched_image = histogram_matching(image, target_hist)
     # 显示原始图像和直方图均衡化后的图像
     cv2.imshow('Original Image', image)
+    cv2.imshow('Target Image', target_image)
     cv2.imshow('Equalized Image', matched_image)
     cv2.waitKey(0)
     cv2.destroyAllWindows()

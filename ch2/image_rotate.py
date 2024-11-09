@@ -1,4 +1,5 @@
 import numpy as np
+import time
 import cv2
 
 from image_zoom import my_imresize
@@ -22,7 +23,7 @@ def my_imrotate(image, angle):
     # 创建一个空白图像用于存储旋转后的图像
     rotated_image = np.zeros((new_h, new_w, 3), dtype=image.dtype)
     
-    # 逆时针旋转图像
+    # 顺时针旋转图像
     for x in range(new_w):
         for y in range(new_h):
             # 计算原图像中对应的坐标
@@ -39,8 +40,13 @@ def my_imrotate(image, angle):
     return rotated_image
 
 if __name__ == "__main__":
-    img = cv2.imread("image1.jpg",1)
+    img = cv2.imread("common/image1.jpg",1)
     zoom_image = my_imresize(img, 0.5, 0.5)
+    
+    start_time = time.time()
     rotate_img = my_imrotate(zoom_image, 45)
-    cv2.imshow("rotate_img", rotate_img)
-    cv2.waitKey(0)
+    end_time = time.time()
+    print(end_time - start_time)
+    # cv2.imshow("origin_img", zoom_image)
+    # cv2.imshow("rotate_img", rotate_img)
+    # cv2.waitKey(0)
